@@ -1,0 +1,67 @@
+#UVa 10025
+
+case=int(input())
+
+for i in range(case-1):
+
+    blank=input()
+
+    x=abs(int(input()))
+
+    lb=int((x*2)**0.5 + 1)
+
+    if x==0:
+
+        print(3)
+
+        print("")
+
+    elif lb*(lb-1)==x*2:
+
+        print(lb-1)
+
+        print("")
+
+    elif ((lb*(lb+1))//2)%2==x%2:
+
+        print(lb)
+
+        print("")
+
+    elif (((lb+1)*(lb+2))//2)%2==x%2:
+
+        print(lb+1)
+
+        print("")
+
+    else:
+
+        print(lb+2)
+
+        print("")
+
+blank=input()
+
+x=abs(int(input()))
+
+lb=int((x*2)**0.5 + 1)
+
+if x==0:
+
+    print(3)
+
+elif lb*(lb-1)==x*2:
+
+    print(lb-1)
+
+elif ((lb*(lb+1))//2)%2==x%2:
+
+    print(lb)
+
+elif (((lb+1)*(lb+2))//2)%2==x%2:
+
+    print(lb+1)
+
+else:
+
+    print(lb+2)

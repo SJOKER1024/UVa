@@ -1,0 +1,27 @@
+# UVA 11479
+
+t=int(input())
+
+for i in range(t):
+
+    x, y, z=(int(v) for v in input().split())
+
+    a=[x,y,z]
+    
+    a.sort()
+
+    if a[0]<=0 or a[1]<=0 or a[2]<=0 or a[2]>=a[1]+a[0]:
+
+        print('Case '+str(i+1)+': Invalid')
+
+    elif a[2]==a[1] and a[1]==a[0]:
+
+        print('Case '+str(i+1)+': Equilateral')
+
+    elif a[2]!=a[1] and a[1]!=a[0]:
+
+        print('Case '+str(i+1)+': Scalene')
+
+    else:
+
+        print('Case '+str(i+1)+': Isosceles')

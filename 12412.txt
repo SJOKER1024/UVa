@@ -1,0 +1,437 @@
+#UVa 12412
+
+SID=[]
+
+data=[]
+
+total=[]
+
+rank=[]
+
+while True:
+
+    y1,y2,y3,y5=[],"","",""
+
+    print("Welcome to Student Performance Management System (SPMS).")
+
+    print("")
+
+    print("1 - Add")
+
+    print("2 - Remove")
+
+    print("3 - Query")
+
+    print("4 - Show ranking")
+
+    print("5 - Show Statistics")
+
+    print("0 - Exit")
+
+    print("")
+
+    x=int(input())
+
+    if x == 1:
+
+        while y1 != ["0"]:
+
+            print("Please enter the SID, CID, name and four scores. Enter 0 to finish.")
+
+            y1=[v for v in input().rstrip(" ").split()]
+
+            if y1 == ["0"]:
+
+                pass
+
+            else:
+
+                if y1[0] in SID:
+
+                    print("Duplicated SID.")
+
+                else:
+
+                    SID.append(y1[0])
+
+                    y1.append(int(y1[3])+int(y1[4])+int(y1[5])+int(y1[6]))
+
+                    y1.append('%.2f'%(y1[7]/4))
+
+                    total.append(y1[7])
+
+                    rank.append(1)
+
+                    if len(rank) >= 2:
+
+                        for i in range(len(rank)-1):
+
+                            if total[i] < total[len(rank)-1]:
+
+                                rank[i] += 1
+
+                            elif total[i] == total[len(rank)-1]:
+
+                                pass
+
+                            else:
+
+                                rank[len(rank)-1] += 1
+
+                    data.append(y1)
+
+    elif x == 2:
+
+        while y2 != "0":
+
+            num=len(data)
+
+            print("Please enter SID or name. Enter 0 to finish.")
+
+            y2=input().rstrip("\n\r ")
+
+            if y2 == "0":
+
+                pass
+            else:
+
+                count=0
+
+                for j in range(num):
+
+                    if y2 in data[num-1-j]:
+
+                        SID.remove(data[num-1-j][0])
+
+                        data.remove(data[num-1-j])
+
+                        for q in range(len(rank)):
+
+                            if rank[q] <= rank[num-1-j]:
+
+                                pass
+
+                            else:
+
+                                rank[q] -= 1
+
+                        del total[num-1-j]
+
+                        del rank[num-1-j]
+
+                        count += 1
+
+                print(str(count)+" student(s) removed.")
+
+                count=0
+
+    elif x == 3:
+
+        while y3 != "0":
+
+            print("Please enter SID or name. Enter 0 to finish.")
+
+            y3=input().rstrip("\n\r ")
+
+            if y3 != "0":
+
+                for k in range(len(data)):
+
+                    if y3 in data[k]:
+
+                        print(str(rank[k])+" ",end="")
+
+                        print(*data[k])
+
+            else:
+
+                pass
+
+    elif x == 4:
+
+        print("Showing the ranklist hurts students' self-esteem. Don't do that.")
+
+    elif x == 5:
+
+        print("Please enter class ID, 0 for the whole statistics.")
+
+        y5=input().rstrip("\n\r ")
+
+        Tscore=[0,0,0,0]
+
+        Pscore=[0,0,0,0]
+
+        Oscore=[0,0,0,0,0]
+
+        if y5 == "0":
+
+            for l in range(len(data)):
+
+                pa=0
+
+                for m in range(4):
+
+                    Tscore[m] += int(data[l][m+3])
+
+                    if int(data[l][m+3]) >= 60:
+
+                        Pscore[m] += 1
+
+                        pa+=1
+
+                Oscore[pa] += 1
+    
+       if len(data) != 0:
+
+                print("Chinese")
+
+                print("Average Score: "+'%.2f'%(Tscore[0]/len(data)+0.00001))
+
+                print("Number of passed students: "+str(Pscore[0]))
+
+                print("Number of failed students: "+str(len(data)-Pscore[0]))
+
+                print("")
+
+                print("Mathematics")
+
+                print("Average Score: "+'%.2f'%(Tscore[1]/len(data)+0.00001))
+
+                print("Number of passed students: "+str(Pscore[1]))
+
+                print("Number of failed students: "+str(len(data)-Pscore[1]))
+
+                print("")
+
+                print("English")
+
+                print("Average Score: "+'%.2f'%(Tscore[2]/len(data)+0.00001))
+
+                print("Number of passed students: "+str(Pscore[2]))
+
+                print("Number of failed students: "+str(len(data)-Pscore[2]))
+
+                print("")
+
+                print("Programming")
+
+                print("Average Score: "+'%.2f'%(Tscore[3]/len(data)+0.00001))
+
+                print("Number of passed students: "+str(Pscore[3]))
+
+                print("Number of failed students: "+str(len(data)-Pscore[3]))
+
+                print("")
+
+                print("Overall:")
+
+                print("Number of students who passed all subjects: "+str(Oscore[4]))
+
+                print("Number of students who passed 3 or more subjects: "+str(Oscore[3]+Oscore[4]))
+
+                print("Number of students who passed 2 or more subjects: "+str(Oscore[2]+Oscore[3]+Oscore[4]))
+
+                print("Number of students who passed 1 or more subjects: "+str(Oscore[1]+Oscore[2]+Oscore[3]+Oscore[4]))
+
+                print("Number of students who failed all subjects: "+str(Oscore[0]))
+
+                print("")
+
+            else:
+
+                print("Chinese")
+
+                print("Average Score: -nan")
+
+                print("Number of passed students: "+str(Pscore[0]))
+
+                print("Number of failed students: "+str(len(data)-Pscore[0]))
+
+                print("")
+
+                print("Mathematics")
+
+                print("Average Score: -nan")
+
+                print("Number of passed students: "+str(Pscore[1]))
+
+                print("Number of failed students: "+str(len(data)-Pscore[1]))
+
+                print("")
+
+                print("English")
+
+                print("Average Score: -nan")
+
+                print("Number of passed students: "+str(Pscore[2]))
+
+                print("Number of failed students: "+str(len(data)-Pscore[2]))
+
+                print("")
+
+                print("Programming")
+
+                print("Average Score: -nan")
+
+                print("Number of passed students: "+str(Pscore[3]))
+
+                print("Number of failed students: "+str(len(data)-Pscore[3]))
+
+                print("")
+
+                print("Overall:")
+
+                print("Number of students who passed all subjects: "+str(Oscore[4]))
+
+                print("Number of students who passed 3 or more subjects: "+str(Oscore[3]+Oscore[4]))
+
+                print("Number of students who passed 2 or more subjects: "+str(Oscore[2]+Oscore[3]+Oscore[4]))
+
+                print("Number of students who passed 1 or more subjects: "+str(Oscore[1]+Oscore[2]+Oscore[3]+Oscore[4]))
+
+                print("Number of students who failed all subjects: "+str(Oscore[0]))
+
+                print("")
+
+        else:
+
+            student=0
+
+            for n in range(len(data)):
+
+                if y5 == data[n][1]:
+
+                    student += 1
+
+                    pa=0
+
+                    for o in range(4):
+
+                        Tscore[o] += int(data[n][o+3])
+
+                        if int(data[n][o+3]) >= 60:
+
+                            Pscore[o] += 1
+
+                            pa+=1
+
+                    Oscore[pa] += 1
+
+                else:
+
+                    pass
+
+            if student != 0:
+
+                print("Chinese")
+
+                print("Average Score: "+'%.2f' %(Tscore[0]/student +0.00001))
+
+                print("Number of passed students: "+str(Pscore[0]))
+
+                print("Number of failed students: "+str(student-Pscore[0]))
+
+                print("")
+
+                print("Mathematics")
+
+                print("Average Score: "+'%.2f' %(Tscore[1]/student +0.00001))
+
+                print("Number of passed students: "+str(Pscore[1]))
+
+                print("Number of failed students: "+str(student-Pscore[1]))
+
+                print("")
+
+                print("English")
+
+                print("Average Score: "+'%.2f' %(Tscore[2]/student +0.00001))
+
+                print("Number of passed students: "+str(Pscore[2]))
+
+                print("Number of failed students: "+str(student-Pscore[2]))
+
+                print("")
+
+                print("Programming")
+
+                print("Average Score: "+'%.2f' %(Tscore[3]/student +0.00001))
+
+                print("Number of passed students: "+str(Pscore[3]))
+
+                print("Number of failed students: "+str(student-Pscore[3]))
+
+                print("")
+
+                print("Overall:")
+
+                print("Number of students who passed all subjects: "+str(Oscore[4]))
+
+                print("Number of students who passed 3 or more subjects: "+str(Oscore[3]+Oscore[4]))
+
+                print("Number of students who passed 2 or more subjects: "+str(Oscore[2]+Oscore[3]+Oscore[4]))
+
+                print("Number of students who passed 1 or more subjects: "+str(Oscore[1]+Oscore[2]+Oscore[3]+Oscore[4]))
+
+                print("Number of students who failed all subjects: "+str(Oscore[0]))
+
+                print("")
+
+            else:
+
+                print("Chinese")
+
+                print("Average Score: -nan")
+
+                print("Number of passed students: "+str(Pscore[0]))
+
+                print("Number of failed students: "+str(student-Pscore[0]))
+
+                print("")
+
+                print("Mathematics")
+
+                print("Average Score: -nan")
+
+                print("Number of passed students: "+str(Pscore[1]))
+
+                print("Number of failed students: "+str(student-Pscore[1]))
+
+                print("")
+
+                print("English")
+
+                print("Average Score: -nan")
+
+                print("Number of passed students: "+str(Pscore[2]))
+
+                print("Number of failed students: "+str(student-Pscore[2]))
+
+                print("")
+
+                print("Programming")
+
+                print("Average Score: -nan")
+
+                print("Number of passed students: "+str(Pscore[3]))
+
+                print("Number of failed students: "+str(student-Pscore[3]))
+
+                print("")
+
+                print("Overall:")
+
+                print("Number of students who passed all subjects: "+str(Oscore[4]))
+                print("Number of students who passed 3 or more subjects: "+str(Oscore[3]+Oscore[4]))
+
+                print("Number of students who passed 2 or more subjects: "+str(Oscore[2]+Oscore[3]+Oscore[4]))
+
+                print("Number of students who passed 1 or more subjects: "+str(Oscore[1]+Oscore[2]+Oscore[3]+Oscore[4]))
+
+                print("Number of students who failed all subjects: "+str(Oscore[0]))
+
+                print("")
+
+    else:
+
+        break

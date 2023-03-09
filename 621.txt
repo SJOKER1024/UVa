@@ -1,0 +1,29 @@
+#UVa 621
+
+try:
+
+    while True:
+
+        s=int(input())
+
+        t=str(s)
+
+        if s==1 or s==4 or s==78:
+
+            print("+")
+
+        elif s%100==35:
+
+            print("-")
+
+        elif int(t[0])==9 and s%10==4:
+
+            print("*")
+
+        elif int(t[0])==1 and int(t[1])==9 and int(t[2])==0:
+
+            print("?")
+
+except EOFError:
+
+    pass

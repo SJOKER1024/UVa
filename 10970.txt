@@ -1,0 +1,13 @@
+#UVa 10970
+
+try:
+
+    while True:
+
+        x,y = (int(v) for v in input().split())
+
+        print(x*y-1)
+
+except EOFError:
+
+    pass

@@ -1,0 +1,13 @@
+# UVA 10055
+
+try:
+
+    while(True):
+
+        x, y=(int(v) for v in input().split())
+
+        print(abs(x-y))
+
+except:
+
+    pass

@@ -1,0 +1,35 @@
+#UVa 10250
+
+try:
+
+    while True:
+
+        a,b,c,d = (float(v) for v in input().split())
+
+        if abs(a-c)<0.0000000001 and abs(b-d)<0.0000000001:
+
+            print("Impossible.")
+
+        else:
+
+            midx=(a+c)/2
+
+            midy=(b+d)/2
+
+            nx=(d-b)/2
+
+            ny=(a-c)/2
+
+            pa=midx-nx
+
+            pb=midy-ny
+
+            pc=midx+nx
+
+            pd=midy+ny
+
+            print("{:.10f}".format(pa)+" "+"{:.10f}".format(pb)+" "+"{:.10f}".format(pc)+" "+"{:.10f}".format(pd))
+
+except EOFError:
+
+    pass

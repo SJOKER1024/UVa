@@ -1,0 +1,125 @@
+#UVa 12108
+
+case=0
+
+while True:
+
+    case += 1
+
+    time = 0
+
+    status = {"temp"}
+
+    status.clear()
+
+    student=int(input())
+
+    struggle=0
+
+    if student == 0:
+
+        break
+
+    else:
+
+        time = 1
+
+        start_status=[]
+
+        wake_p=[]
+
+        total_p=[]
+
+        loop = 1
+
+        wake_count=0
+
+        for i in range(student):
+
+            x=[int(v) for v in input().split()]
+
+            wake_p.append(x[0])
+
+            total_p.append(x[0]+x[1])
+
+            start_status.append(x[2]-1)
+
+        for j in range(student):
+
+            if start_status[j] < wake_p[j]:
+
+                wake_count += 1
+
+        if wake_count == student:
+
+            loop = 0
+
+            print("Case "+str(case)+": "+str(time))
+
+        else:
+
+            if wake_count >= student//2 + student%2:
+
+                struggle = 1
+
+            status.add(tuple(start_status))
+
+        wake_count = 0
+
+        while loop == 1:
+
+            length = len(status)
+
+            time += 1
+
+            for k in range(student):
+
+                if struggle == 1:
+
+                    if start_status[k] != wake_p[k] - 1:
+
+                        start_status[k] = (start_status[k]+1)%total_p[k]
+
+                    else:
+
+                        start_status[k] = 0
+
+                else:
+
+                    start_status[k] = (start_status[k]+1)%total_p[k]
+
+            for l in range(student):
+
+                if start_status[l] < wake_p[l]:
+
+                    wake_count += 1
+
+            if wake_count == student:
+
+                loop = 0
+
+                print("Case "+str(case)+": "+str(time))
+
+            else:
+
+                if wake_count >= student//2 + student%2:
+
+                    struggle = 1
+
+                else:
+
+                    struggle = 0
+
+                status.add(tuple(start_status))
+
+                if len(status) == length:
+
+                    loop = 0
+
+                    print("Case "+str(case)+": "+str(-1))
+
+                else:
+
+                    length = len(status)
+
+            wake_count = 0

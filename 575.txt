@@ -1,0 +1,19 @@
+#Uva 575
+
+while True:
+
+    x=input()
+
+    if int(x) == 0:
+
+        break
+
+    else:
+
+        ans=0
+
+        for i in range(len(x)):
+
+            ans += int(x[i])*(2**(len(x)-i) -1)
+
+        print(ans)

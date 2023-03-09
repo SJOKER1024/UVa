@@ -1,0 +1,118 @@
+#UVa 1590
+
+try:
+
+    while True:
+
+        x=int(input())
+
+        list1=[]
+        for i in range(x):
+
+            a=[int(v) for v in input().split(".")]
+
+            address=""
+
+            address_min="11111111111111111111111111111111"
+
+            for j in range(4):
+
+                t=a[j]
+
+                binary=""
+
+                for k in range(7):
+
+                    binary += str(t%2)
+
+                    t=t//2
+
+                binary += str(t)
+
+                address += binary[::-1]
+
+            list1.append(address)
+
+            address_min = min(address,address_min)
+
+            AIPlist=[]
+
+            for IP in range(4):
+
+                IPcount=0
+
+                for IPB in range(8):
+
+                    IPcount += int(address_min[IP*8 + IPB])*(2**(7-IPB))
+
+                AIPlist.append(str(IPcount))
+
+        if x == 1:
+
+            Mask = "255.255.255.255"
+
+            print(".".join(AIPlist))
+
+            print(Mask)
+
+        else:
+
+            Maskbin = list1[0]
+
+            string = ""
+
+            n=32
+
+            for a in range(x-1):
+
+                for b in range(32):
+
+                    if Maskbin[b]==list1[a+1][b]:
+
+                        string += Maskbin[b]
+
+                    else:
+
+                        string += "0"*(32-b)
+
+                        n=min(n,b)
+
+                        break
+
+                Maskbin = string
+
+            Mask = "1"*n + "0"*(32-n)
+
+            address_ans = address_min[:n] + "0"*(32-n)
+
+            Mlist=[]
+
+            for IP in range(4):
+
+                IPcount=0
+
+                for IPB in range(8):
+
+                    IPcount += int(Mask[IP*8 + IPB])*(2**(7-IPB))
+
+                Mlist.append(str(IPcount))
+
+            AIPlist=[]
+
+            for IP in range(4):
+
+                IPcount=0
+
+                for IPB in range(8):
+
+                    IPcount += int(address_ans[IP*8 + IPB])*(2**(7-IPB))
+
+                AIPlist.append(str(IPcount))
+
+            print(".".join(AIPlist))
+
+            print(".".join(Mlist))
+
+except EOFError:
+
+    pass

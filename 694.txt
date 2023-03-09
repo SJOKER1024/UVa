@@ -1,0 +1,55 @@
+# UVA 694
+
+case=0
+
+try:
+
+    while True:
+
+        case+=1
+
+        term=0
+
+        x, y = (int(v) for v in input().split())
+
+        xt=x
+
+        if x==-1 and y==-1:
+
+            break
+
+        elif x==1:
+
+            print("Case "+str(case)+": A = "+str(x)+", limit = "+str(y)+", number of terms = 1")
+
+        else:
+
+            while xt!=1:
+
+                if xt%2==0:
+
+                    term+=1
+
+                    xt = xt//2
+
+                    if xt==1:
+
+                        print("Case "+str(case)+": A = "+str(x)+", limit = "+str(y)+", number of terms = "+str(term+1))
+
+                        break
+
+                else:
+
+                    term+=1
+
+                    xt = 3*xt + 1
+
+                    if xt>y:
+
+                        print("Case "+str(case)+": A = "+str(x)+", limit = "+str(y)+", number of terms = "+str(term))
+
+                        break
+
+except EOFError:
+
+    pass

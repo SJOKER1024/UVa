@@ -1,0 +1,31 @@
+#UVa 10719
+
+try:
+
+    while True:
+
+        k=int(input())
+
+        c=[int(v) for v in input().split()]
+
+        q=[c[0]]
+
+        for i in range(len(c)-1):
+
+            q.append(q[i]*k+c[i+1])
+
+        print("q(x): ",end='')
+
+        for j in range(len(q)-2):
+
+            print(str(q[j])+" ",end='')
+
+        print(str(q[len(q)-2]))
+
+        print("r = "+str(q[len(q)-1]))
+
+        print("")
+
+except EOFError:
+
+    pass

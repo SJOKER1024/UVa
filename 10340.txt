@@ -1,0 +1,33 @@
+#UVa 10340
+
+try:
+
+    while True:
+
+        x,y=input().split()
+
+        for i in range(len(y)):
+
+            if x == "":
+
+                break
+
+            elif y[i]==x[0]:
+
+                x=x.replace(x[0],"",1)
+
+            else:
+
+                pass
+
+        if x == "":
+
+            print("Yes")
+
+        else:
+
+            print("No")
+
+except EOFError:
+
+    pass

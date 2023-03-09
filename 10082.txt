@@ -1,0 +1,25 @@
+#UVa 10082
+
+keyboard="`1234567890-=QWERTYUIOP[]\ASDFGHJKL;'ZXCVBNM,./"
+
+try:
+
+    while True:
+
+        x=input()
+
+        for i in range(len(x)):
+
+            if x[i] == " ":
+
+                print(" ",end="")
+
+            else:
+
+                print(keyboard[keyboard.find(x[i])-1],end="")
+
+        print("")
+
+except EOFError:
+
+    pass

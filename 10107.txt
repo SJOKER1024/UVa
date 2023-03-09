@@ -1,0 +1,21 @@
+#UVa 10107
+
+a=[]
+
+try:
+
+    while(True):
+
+        x=int(input())
+
+        a.append(x)
+
+        a.sort()
+
+        l=len(a)//2
+
+        print((a[l]+a[~l])//2)
+
+except EOFError:
+
+    pass

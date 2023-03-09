@@ -1,0 +1,33 @@
+#UVa 1587
+
+try:
+
+    while True:
+
+        list1=[]
+
+        for i in range(6):
+
+            x,y = (int(v) for v in input().split())
+
+            if x > y:
+
+                x,y = y,x
+
+            list2=[x,y]
+
+            list1.append(list2)
+
+        list1.sort()
+
+        if list1[0][0]==list1[1][0]==list1[2][0]==list1[3][0] and list1[4][0]==list1[5][0]==list1[0][1]==list1[1][1] and list1[2][1]==list1[3][1]==list1[4][1]==list1[5][1]:
+
+            print("POSSIBLE")
+
+        else:
+
+            print("IMPOSSIBLE")
+
+except EOFError:
+
+    pass

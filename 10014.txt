@@ -1,0 +1,59 @@
+#UVa 10014
+
+case=int(input())
+
+for i in range(case-1):
+
+    blank=input()
+
+    while EOFError:
+
+        c=0
+
+        n=int(input())
+
+        a_h=float(input())
+
+        a_t=float(input())
+
+        if n==0:
+
+            print('%.2f' % a_t)
+
+        else:
+
+            for j in range(n):
+
+                c+=2*(n-j)*float(input())
+
+            print('%.2f' % ((a_t + n*a_h - c)/(n+1)))
+
+            print("")
+
+        break
+
+blank=input()
+
+while EOFError:
+
+    c=0
+
+    n=int(input())
+
+    a_h=float(input())
+
+    a_t=float(input())
+
+    if n==0:
+
+        print('%.2f' % a_t)
+
+    else:
+
+        for j in range(n):
+
+            c+=2*(n-j)*float(input())
+
+        print('%.2f' % ((a_t + n*a_h - c)/(n+1)))
+
+    break

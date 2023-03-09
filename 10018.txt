@@ -1,0 +1,25 @@
+# UVA 10018
+
+t=int(input())
+
+try:
+
+    while True:
+
+        for i in range(t):
+
+            x=input()
+
+            count=0
+
+            while x!=x[::-1]:
+
+                x=str(int(x)+int(x[::-1]))
+
+                count+=1
+
+            print(str(count)+" "+x)
+
+except EOFError:
+
+    pass

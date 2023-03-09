@@ -1,0 +1,135 @@
+#UVa 512
+
+p=0
+
+while True:
+
+    list1=[]
+
+    r,c = (int(v) for v in input().split())
+
+    if r==0 and c==0:
+
+        break
+
+    else:
+
+        p+=1
+
+        if p>=2:
+
+            print("")
+
+        print("Spreadsheet #"+str(p))
+
+        x=int(input())
+
+        for i in range(x):
+
+            op = [u for u in input().split()]
+
+            list1.append(op)
+
+        y=int(input())
+
+        for j in range(y):
+
+            count=0
+
+            a,b = (int(w) for w in input().split())
+
+            c,d = a,b
+
+            tmp=0
+
+            for k in range(x):
+
+                if list1[k][0]=="DR":
+
+                    if str(c) in list1[k][2:]:
+
+                        print("Cell data in ("+str(a)+","+str(b)+") GONE")
+
+                        count+=1
+
+                        break
+
+                    else:
+
+                        for t in range(2,len(list1[k])):
+
+                            if int(list1[k][t]) < c:
+
+                                tmp += 1
+
+                        c -= tmp
+
+                        tmp=0
+
+                elif list1[k][0]=="DC":
+
+                    if str(d) in list1[k][2:]:
+
+                        print("Cell data in ("+str(a)+","+str(b)+") GONE")
+
+                        count+=1
+
+                        break
+
+                    else:
+
+                        for t in range(2,len(list1[k])):
+
+                            if int(list1[k][t]) < d:
+
+                                tmp += 1
+
+                        d -= tmp
+
+                        tmp=0
+
+                elif list1[k][0]=="IR":
+
+                    for t in range(2,len(list1[k])):
+
+                        if int(list1[k][t]) <= c:
+
+                            tmp += 1
+
+                    c += tmp
+
+                    tmp=0
+
+                elif list1[k][0]=="IC":
+
+                    for t in range(2,len(list1[k])):
+
+                        if int(list1[k][t]) <= d:
+
+                            tmp += 1
+
+                    d += tmp
+
+                    tmp=0
+
+                elif list1[k][0]=="EX":
+
+                    if list1[k][1]==str(c) and list1[k][2]==str(d):
+
+                        c,d = int(list1[k][3]),int(list1[k][4])
+
+                    elif list1[k][3]==str(c) and list1[k][4]==str(d):
+
+                        c,d = int(list1[k][1]),int(list1[k][2])
+
+                    else:
+
+                        pass
+
+                else:
+
+                    pass
+
+            if count==0:
+
+                print("Cell data in ("+str(a)+","+str(b)+") moved to ("+str(c)+","+str(d)+")")

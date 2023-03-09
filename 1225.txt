@@ -1,0 +1,29 @@
+#UVa 1225
+
+list1=[0,0,0,0,0,0,0,0,0,0]
+
+list2=["0 0 0 0 0 0 0 0 0 0"]*10000
+
+for i in range(1,10000):
+
+    x=str(i)
+
+    for j in range(len(x)):
+
+        list1[int(x[j])] += 1
+
+    y=""
+
+    for k in range(len(list1)):
+
+        y += (str(list1[k]) + " ")
+
+    list2[i] = y.rstrip(" ")
+
+case=int(input())
+
+for l in range(case):
+
+    ans=int(input())
+
+    print(list2[ans])

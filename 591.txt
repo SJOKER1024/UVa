@@ -1,0 +1,41 @@
+#UVa 591
+
+set_num=0
+
+stack=1
+
+while stack!=0:
+
+    stack=int(input())
+
+    if stack==0:
+
+        break
+
+    else:
+
+        set_num=set_num+1
+
+        total=0
+
+        delta=0
+
+        s=[v for v in input().split()]
+
+        for i in range(len(s)):
+
+            total=total+int(s[i])
+
+        avg=total//stack
+
+        for j in range(len(s)):
+
+            delta=delta+abs(int(s[j])-avg)
+
+        move=delta//2
+
+        print("Set #"+str(set_num))
+
+        print("The minimum number of moves is "+str(move)+".")
+
+        print("")

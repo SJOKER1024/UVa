@@ -1,0 +1,19 @@
+#UVa 10790
+
+case=0
+
+while True:
+
+    a,b = (int(v) for v in input().split())
+
+    if a+b==0:
+
+        break
+
+    else:
+
+        case+=1
+
+        ans=a*(a-1)*b*(b-1)//4
+
+        print("Case "+str(case)+": "+str(ans))

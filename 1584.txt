@@ -1,0 +1,15 @@
+#UVa 1584
+
+case=int(input())
+
+for i in range(case):
+
+    list1=[]
+
+    x=input().strip("\n\r")*2
+
+    for j in range(len(x)//2):
+
+        list1.append(x[j:j+len(x)//2])
+
+    print(min(list1))

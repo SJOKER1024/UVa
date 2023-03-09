@@ -1,0 +1,49 @@
+#UVa 10161
+
+while True:
+
+    time=int(input())
+
+    if time==0:
+
+        break
+
+    else:
+
+        root=int(time**0.5)
+
+        residue=time-root**2
+
+        if residue==0:
+
+            if root%2==1:
+
+                print(1,root)
+
+            else:
+
+                print(root,1)
+
+        else:
+
+            r=(root+1)**2 - root**2
+
+            if root%2==1:
+
+                if residue <= (r+1)//2:
+
+                    print(residue,root+1)
+
+                else:
+
+                    print(root+1,root+1-(residue-(r+1)//2))
+
+            else:
+
+                if residue <= (r+1)//2:
+
+                    print(root+1,residue)
+
+                else:
+
+                    print(root+1-(residue-(r+1)//2),root+1)

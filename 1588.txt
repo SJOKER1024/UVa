@@ -1,0 +1,48 @@
+#UVa 1588
+
+try:
+
+    while True:
+
+        x=input().strip("\n\r")
+
+        y=input().strip("\n\r")
+
+        if len(x) < len(y):
+
+            x,y = y,x
+
+        z= "0"*(len(y)-1) + x + "0"*(len(y)-1)
+
+        ans=len(x)+len(y)
+
+        for i in range((len(x)+len(y)-1)):
+
+            for j in range(len(y)+1):
+
+                if j == len(y):
+
+                    if i < len(y)-1:
+
+                        ans=min(len(x)+len(y)-1-i,ans)
+
+                    elif i >= len(y)-1 and i <= len(x)-1:
+
+                        ans=min(ans,len(x))
+
+                    else:
+
+                        ans=min(ans,i+1)
+
+                elif int(z[j+i])+int(y[j]) > 3:
+
+                    break
+
+                else:
+
+                    pass
+        print(ans)
+
+except EOFError:
+
+    pass

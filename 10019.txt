@@ -1,0 +1,20 @@
+# UVA 10018
+
+t=int(input())
+
+try:
+
+    while True:
+
+        for i in range(t):
+
+            x=input()
+
+            b_1=bin(int(x,10))
+
+            b_2=bin(int(x,16))
+
+            print(str(b_1.count("1"))+" "+str(b_2.count("1")))
+except EOFError:
+
+    pass

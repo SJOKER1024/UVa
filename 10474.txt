@@ -1,0 +1,44 @@
+#UVa 10474
+
+case=0
+
+while True:
+
+    N,Q = (int(v) for v in input().split())
+
+    if N==0 and Q==0:
+
+        break
+
+    else:
+        case+=1
+
+        print("CASE# "+str(case)+":")
+
+        list1=[0]*(10001)
+
+        list2=[]
+
+        for i in range(N):
+
+            x=int(input())
+
+            list1[x-1] += 1
+
+        list2.append(0)
+
+        for k in range(len(list1)-1):
+
+            list2.append(list2[k]+list1[k])
+
+        for j in range(Q):
+
+            y=int(input())
+
+            if list1[y-1] > 0:
+
+                print(str(y)+" found at "+str(list2[y-1]+1))
+
+            else:
+
+                print(str(y)+" not found")

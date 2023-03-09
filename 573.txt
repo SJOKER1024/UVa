@@ -1,0 +1,47 @@
+#UVa 573
+
+while True:
+
+    w,d,n,f = (int(v) for v in input().split())
+
+    if w+d+n+f==0:
+
+        break
+
+    else:
+
+        x=0
+
+        y=0
+
+        day=1
+
+        while True:
+
+            if (day-1)*f < 100:
+
+                x=y+d*(100-(day-1)*f)
+
+                y=x-100*n
+
+            else:
+
+                x=y
+
+                y=x-100*n
+
+            if x > 100*w:
+
+                print("success on day "+str(day))
+
+                break
+
+            elif y < 0:
+
+                print("failure on day "+str(day))
+
+                break
+
+            else:
+
+                day+=1

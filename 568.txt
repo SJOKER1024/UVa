@@ -1,0 +1,29 @@
+#Uva 568
+
+fact_list=[]
+
+fact_list2=[]
+
+digit=1
+
+for i in range(10000):
+
+    digit = digit*(i+1)
+
+    fact_list.append(int(str(digit).rstrip("0"))%1000000)
+
+    fact_list2.append(int(str(digit).rstrip("0"))%10)
+
+    digit = fact_list[i]
+
+try:
+
+    while True:
+
+        x=int(input())
+
+        print("{0:>10}".format(str(x)+" -> "+str(fact_list2[x-1])))
+
+except EOFError:
+
+    pass

@@ -1,0 +1,25 @@
+#UVa 11044
+
+case=int(input())
+
+for i in range(case):
+
+    a,b = (int(v) for v in input().split())
+
+    if a%3==2:
+
+        x=(a-2)//3
+
+    else:
+
+        x=(a-2)//3+1
+
+    if b%3==2:
+
+        y=(b-2)//3
+
+    else:
+
+        y=(b-2)//3+1
+
+    print(x*y)

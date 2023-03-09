@@ -1,0 +1,15 @@
+# UVA 11727
+
+t=int(input())
+
+for i in range(t):
+
+    e=[int(v) for v in input().split()]
+
+    e.sort()
+
+    e.pop(0)
+
+    e.pop(1)
+
+    print("Case "+str(i+1)+": "+str(e[0]))

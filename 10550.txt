@@ -1,0 +1,25 @@
+#UVa 10550
+
+try:
+
+    while(True):
+
+        a, b, c, d=(int(v) for v in input().split())
+
+        if a+b+c+d==0:
+
+            break
+
+        else:
+
+            x=(a-b if a>b else 40+a-b)
+
+            y=(c-b if c>b else 40+c-b)
+
+            z=(c-d if c>d else 40+c-d)
+
+            print(1080+9*(x+y+z))
+
+except EOFError:
+
+    pass

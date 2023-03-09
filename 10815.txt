@@ -1,0 +1,41 @@
+#UVa 10815
+
+set1={""}
+
+set1.clear()
+
+try:
+
+    while True:
+
+        x=input().rstrip("\n\r")
+
+        x_convert=""
+
+        for i in range(len(x)):
+
+            if x[i].isalpha() != True:
+
+                x_convert += " "
+
+            else:
+
+                x_convert += x[i]
+
+        y=[v.lower() for v in x_convert.split()]
+
+        for j in range(len(y)):
+
+            set1.add(y[j])
+
+except EOFError:
+
+    pass
+
+list1=list(set1)
+
+list1.sort()
+
+for j in range(len(list1)):
+
+    print(list1[j])
