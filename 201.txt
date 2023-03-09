@@ -1,0 +1,91 @@
+#UVa 201
+
+def square_count(a,b,c):
+
+    side=0
+
+    for m in range(c):
+
+        side += (H[b][a+m]+V[a][b+m])
+
+        side += (H[b+c][a+m]+V[a+c][b+m])
+
+    if side == c*4:
+
+        temp = 1
+
+    else:
+
+        temp = 0
+
+    return temp
+
+problem=0
+
+try:
+
+    while True:
+
+        n = int(input())
+
+        l = int(input())
+
+        if problem != 0:
+
+            print("")
+
+            print("**********************************")
+
+            print("")
+
+        problem += 1
+
+        print("Problem #"+str(problem))
+
+        print("")
+
+        count=[0 for v in range(n-1)]
+
+        H = [[0]*n for i in range(n)]
+
+        V = [[0]*n for j in range(n)]
+
+        for k in range(l):
+
+            x,y,z = (u for u in input().split())
+
+            if x == "H":
+
+                H[int(y)-1][int(z)-1] = 1
+
+            else:
+
+                V[int(y)-1][int(z)-1] = 1
+
+        total=0
+
+        for p in range(n-1):
+
+            for q in range(n-1):
+
+               for r in range(min(n-1-p,n-1-q)):
+
+                   t = square_count(p,q,r+1)
+
+                   count[r] += t
+
+                   total += t
+
+        for ans in range(len(count)):
+
+            if count[ans] > 0:
+
+                print(str(count[ans])+" square (s) of size "+str(ans+1))
+
+        if total == 0 :
+
+            print("No completed squares can be found.")
+
+except EOFError:
+
+    pass

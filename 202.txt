@@ -1,0 +1,75 @@
+#UVa 202
+
+try:
+
+    count=0
+
+    while True:
+
+        x,y=(int(v) for v in input().split())
+
+        digit=[]
+
+        remain=[]
+
+        start=0
+
+        ans=str(x)+"/"+str(y)+" = "
+
+        while True:
+
+            d=x//y
+
+            r=x%y
+
+            digit.append(d)
+
+            if r in remain:
+
+                start=remain.index(r)
+
+                break
+
+            else:
+
+                remain.append(r)
+
+                x=r*10
+
+        ans += (str(digit[0])+".")
+
+        for i in range(1,len(digit)):
+
+            if i == (start+1):
+
+                ans += ("("+str(digit[i]))
+
+            elif i == 51:
+
+                ans += "..."
+
+                break
+
+            else:
+
+                ans += str(digit[i])
+
+        ans += ")"
+
+        print(ans)
+
+        length=len(remain)-start
+
+        print("   "+str(length)+" = number of digits in repeating cycle")
+
+        if count==0:
+
+            print("")
+
+        else:
+
+            count+=1
+
+except EOFError:
+
+    pass

@@ -1,0 +1,115 @@
+#UVa 508
+
+code_dict={}
+
+wordbank=[]
+
+mapword=[]
+
+try:
+
+    while True: #morse code block
+
+        x=[v for v in input().split()]
+
+        if x == []:
+
+            pass
+
+        elif x[0] == "*":
+
+            break
+
+        else:
+
+            code_dict[x[0]] = x[1]
+
+    while True: #wordbank
+
+        y = input().rstrip("\n\r")
+
+        if y == "":
+
+            pass
+
+        elif y[0] == "*":
+
+            break
+
+        else:
+
+            wordcode=""
+
+            for i in range(len(y)):
+
+                wordcode += code_dict[y[i]]
+
+            wordbank.append(y)
+
+            mapword.append(wordcode)
+
+    while True: #encode
+
+        z=[u for u in input().split()]
+
+        if z == []:
+
+            continue
+
+        elif z[0] == "*":
+
+            break
+
+        else:
+
+            for j in range(len(z)):
+
+                candidate1=[]
+
+                candidate2=""
+
+                distance=1000
+
+                for k in range(len(mapword)):
+
+                    if z[j] == mapword[k]:
+
+                        candidate1.append(wordbank[k])
+
+                    else:
+
+                        if z[j].find(mapword[k]) == 0 or mapword[k].find(z[j]) == 0:
+
+                            if distance > abs(len(z[j])-len(mapword[k])):
+
+                                distance = abs(len(z[j])-len(mapword[k]))
+
+                                candidate2=wordbank[k]
+
+                            else:
+
+                                pass
+
+                        else:
+
+                            pass
+
+                if candidate1 == []:
+
+                    print(candidate2+"?")
+
+                elif len(candidate1) == 1:
+
+                    print(candidate1[0])
+
+                else:
+
+                    print(candidate1[0]+"!")
+
+    while True:
+
+        t = input()
+
+except EOFError:
+
+    pass

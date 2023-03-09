@@ -1,0 +1,109 @@
+#UVa 101
+
+dict1={0:"0",1:"1",2:"2",3:"3",4:"4",5:"5",6:"6",7:"7",8:"8",9:"9",10:"A",11:"B",12:"C",13:"D",14:"E",15:"F",16:"G",17:"H",18:"I",19:"J",20:"K",21:"L",22:"M",23:"N",24:"O",25:"P"}
+
+dict2={"0":0,"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"A":10,"B":11,"C":12,"D":13,"E":14,"F":15,"G":16,"H":17,"I":18,"J":19,"K":20,"L":21,"M":22,"N":23,"O":24,"P":25}
+
+block=int(input())
+
+plist = []
+
+anslist = []
+
+for i in range(block):
+
+    plist.append(i)
+
+    anslist.append(dict1[i])
+
+while True:
+
+    command = [v for v in input().split()]
+
+    if command[0] == "quit":
+
+        break
+
+    elif plist[int(command[1])] == plist[int(command[3])]:
+
+        pass
+
+    elif command[1] == command[3]:
+
+        pass
+
+    elif int(command[1]) > 24 or int(command[3]) > 24:
+
+        pass
+
+    else:
+
+        if command[2] == "onto":
+
+            string=anslist[plist[int(command[3])]][::-1]
+
+            for j in range(len(string)):
+
+                if string[j] == dict1[int(command[3])]:
+
+                    break
+
+                else:
+
+                    anslist[plist[int(command[3])]] = anslist[plist[int(command[3])]].rstrip(string[j])
+
+                    anslist[dict2[string[j]]] += string[j]
+
+                    plist[dict2[string[j]]] = dict2[string[j]]
+
+        string=anslist[plist[int(command[1])]][::-1]
+
+        string2=""
+
+        for k in range(len(string)):
+
+            if string[k] == dict1[int(command[1])]:
+
+                string2 += string[k]
+
+                anslist[plist[int(command[3])]] += string2[::-1]
+
+                anslist[plist[int(command[1])]] = anslist[plist[int(command[1])]].rstrip(string[k])
+
+                plist[dict2[string[k]]] = plist[int(command[3])]
+
+                break
+
+            else:
+
+                if command[0] == "move":
+
+                    anslist[plist[int(command[1])]] = anslist[plist[int(command[1])]].rstrip(string[k])
+
+                    anslist[dict2[string[k]]] += string[k]
+
+                    plist[dict2[string[k]]] = dict2[string[k]]
+
+                else:
+
+                    string2 += string[k]
+
+                    anslist[plist[int(command[1])]] = anslist[plist[int(command[1])]].rstrip(string[k])
+
+                    plist[dict2[string[k]]] = plist[int(command[3])]
+
+for l in range(len(anslist)):
+
+    char=[]
+
+    for t in range(len(anslist[l])):
+
+        char.append(str(dict2[anslist[l][t]]))
+
+    if len(char) != 0:
+
+        print(str(l)+": "+" ".join(char))
+
+    else:
+
+        print(str(l)+":")

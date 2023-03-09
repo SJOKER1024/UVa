@@ -1,0 +1,43 @@
+# UVA 457
+
+dict={"0":" ","1":".","2":"x","3":"W"}
+
+case=int(input())
+
+for t in range(case):
+
+    blank=input()
+
+    DNA=[int(v) for v in input().split()]
+
+    PD="000000000000000000001000000000000000000000"
+
+    print("                   .                    ")
+
+    for i in range(0,49):
+
+        PDNext="0"
+
+        PDP=" "
+
+        for j in range(1,41):
+
+            PDNext+=str(DNA[int(PD[j-1])+int(PD[j])+int(PD[j+1])])
+
+            PDP+=dict[str(DNA[int(PD[j-1])+int(PD[j])+int(PD[j+1])])]
+
+        PDNext+="0"
+
+        PDP+=" "
+
+        PD=PDNext
+
+        print(PDP[1:41])
+
+    if t<case-1:
+
+        print("")
+
+    else:
+
+        pass

@@ -1,0 +1,29 @@
+#UVa 272
+
+count=0
+
+try:
+
+    while True:
+
+        x=input()
+
+        while x.find("\"") >= 0 :
+
+            if count%2==0:
+
+                x=x.replace("\"","``",1)
+
+                count+=1
+
+            else:
+
+                x=x.replace("\"","\'\'",1)
+
+                count+=1
+
+        print(x)
+
+except EOFError:
+
+    pass

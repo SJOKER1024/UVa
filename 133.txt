@@ -1,0 +1,77 @@
+#UVa 133
+
+while True:
+
+    n,k,m = (int(v) for v in input().split())
+
+    if n==0 and k ==0 and m==0:
+
+        break
+
+    else:
+
+        list1=[]
+
+        list2=[]
+
+        ans=""
+
+        temp1=0
+
+        temp2=0
+
+        for i in range(n):
+
+            list1.append(i+1)
+
+            list2.append(n-i)
+
+        while len(list1) != 0:
+
+            for a in range(k):
+
+                if a==k-1:
+
+                    temp1=list1[0]
+
+                    list1.remove(list1[0])
+
+                else:
+
+                    temp1=list1[0]
+
+                    list1.remove(list1[0])
+
+                    list1.append(temp1)
+
+            for b in range(m):
+
+                if b==m-1:
+
+                    temp2=list2[0]
+
+                    list2.remove(list2[0])
+
+                else:
+
+                    temp2=list2[0]
+
+                    list2.remove(list2[0])
+
+                    list2.append(temp2)
+
+            if temp2==temp1:
+
+                ans+=(" "*(3-len(str(temp1)))+str(temp1)+",")
+
+            else:
+
+                ans+=(" "*(3-len(str(temp1)))+str(temp1))
+
+                ans+=(" "*(3-len(str(temp2)))+str(temp2)+",")
+
+                list1.remove(temp2)
+
+                list2.remove(temp1)
+
+        print(ans.rstrip(","))

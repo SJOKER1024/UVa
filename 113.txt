@@ -1,0 +1,15 @@
+#UVa 113
+
+try:
+
+    while True:
+
+        power=int(input())
+
+        real=int(input())
+
+        print(int(round(real**(1/power),0)))
+
+except EOFError:
+
+    pass

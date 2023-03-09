@@ -1,0 +1,85 @@
+#UVa 156
+
+list_orig=[]
+
+list_lower=[]
+
+list_ans=[]
+
+while True:
+
+    x=input().rstrip("\n\r")
+
+    y=""
+
+    if x[0] == "#":
+
+        break
+
+    else:
+
+        for i in range(len(x)):
+
+            if x[i].isalpha() != True:
+
+                y += " "
+
+            else:
+
+                y += x[i]
+
+    list1=[v for v in y.split()]
+
+    for j in range(len(list1)):
+
+        list_orig.append(list1[j])
+
+for k in range(len(list_orig)):
+
+    z=list_orig[k].lower()
+
+    list2=[]
+
+    for l in range(len(z)):
+
+        list2.append(z[l])
+
+        list2.sort()
+
+    zz="".join(list2)
+
+    list_lower.append(zz)
+
+dict1={}
+
+set1={"a"}
+
+set1.clear()
+
+length=len(dict1)
+
+for m in range(len(list_lower)):
+
+    dict1.update({list_lower[m]:list_orig[m]})
+
+    if length==len(dict1):
+
+        set1.add(list_lower[m])
+
+    else:
+
+        length += 1
+
+for v in set1:
+
+    del dict1[v]
+
+for w in dict1:
+
+    list_ans.append(dict1[w])
+
+list_ans.sort()
+
+for p in range(len(list_ans)):
+
+    print(list_ans[p])

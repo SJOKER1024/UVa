@@ -1,0 +1,25 @@
+#UVa 488
+
+x=int(input())
+
+for i in range(x):
+
+    y=input()
+
+    a=int(input())
+
+    f=int(input())
+
+    for j in range(f):
+
+        for k in range(2*a-1):
+
+            print(str(a-abs(a-k-1))*(a-abs(a-k-1)))
+
+        if i==x-1 and j==f-1:
+
+            pass
+    
+   else:
+
+            print("")

@@ -1,0 +1,83 @@
+#UVa 213
+
+try:
+
+    while True:
+
+        ans=""
+
+        x=input().rstrip("\n\r")
+
+        listword=[]
+
+        listkey=[[],[],[],[],[],[],[]]
+
+        if len(x) < 248:
+
+            x += "0"*(248 - len(x))
+
+        for i in range(248):
+
+            listword.append(x[i])
+
+        for j in range(7):
+
+            for k in range(2**(j+1) - 1):
+
+                listkey[j].append(listword[0])
+
+                listword.remove(listword[0])
+
+        m=input().rstrip("\n\r")
+
+        while len(m) < 3:
+
+            m += input().rstrip("\n\r")
+
+        head=m[0:3]
+
+        m=m[3:]
+
+        while head != "000":
+
+            hnum=int(head[0])*4+int(head[1])*2+int(head[2])
+
+            word=""
+
+            while word != "1"*hnum:
+
+                while len(m) < hnum:
+
+                    m += input().rstrip("\n\r")
+
+                word=m[0:hnum]
+
+                m=m[hnum:]
+
+                if word == "1"*hnum:
+
+                    while len(m) < 3:
+
+                        m += input().rstrip("\n\r")
+
+                    head=m[0:3]
+
+                    m=m[3:]
+
+                    break
+
+                else:
+
+                    wnum=0
+
+                    for l in range(hnum):
+
+                        wnum+=int(word[l])*(2**(hnum-l-1))
+
+                    ans+=listkey[hnum-1][wnum]
+
+        print(ans)
+
+except EOFError:
+
+    pass

@@ -1,0 +1,75 @@
+#UVa 340
+
+game=0
+
+try:
+
+    while True:
+
+        length=int(input())
+
+        if length==0:
+
+            break
+
+        else:
+
+            game+=1
+
+            print("Game "+str(game)+":")
+
+            key=[int(v) for v in input().split()]
+
+            guess_sum=1
+
+            while guess_sum!=0:
+
+                a=0
+
+                b=0
+
+                key_left=[]
+
+                guess_left=[]
+
+                guess=[int(u) for u in input().split()]
+
+                if sum(guess)==0:
+
+                    guess_sum=0
+
+                    break
+
+                else:
+
+                    for i in range(len(guess)):
+
+                        if guess[i]==key[i]:
+
+                            a+=1
+
+                        else:
+
+                            key_left.append(key[i])
+
+                            guess_left.append(guess[i])
+
+                    kls=set(key_left)
+
+                    gls=set(guess_left)
+
+                    kll=list(kls)
+
+                    gll=list(gls)
+
+                    for j in range(len(gll)):
+
+                        if gll[j] in kll:
+
+                            b+=1
+
+                    print("    ("+str(a)+","+str(b)+")")
+
+except EOFError:
+
+    pass

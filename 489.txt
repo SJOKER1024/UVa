@@ -1,0 +1,73 @@
+#UVa 489
+
+try:
+
+    while(True):
+
+        count=0
+
+        x=int(input())
+
+        if x==-1:
+
+            break
+
+        else:
+
+            print("Round "+str(x))
+
+            a=input()
+
+            g=input()
+
+            ans=[a[i] for i in range(len(a))]
+
+            ans_non_repeat=list(set(ans))
+
+            ans_non_repeat.sort(key=ans.index)
+
+            guess=[g[i] for i in range(len(g))]
+
+            guess_non_repeat=list(set(guess))
+
+            guess_non_repeat.sort(key=guess.index)
+
+            for i in range(len(guess_non_repeat)):
+
+                if guess_non_repeat[i] in ans_non_repeat:
+
+                    ans_non_repeat.remove(guess_non_repeat[i])
+
+                    if ans_non_repeat==[]:
+
+                        print("You win.")
+
+                        break
+
+                    else:
+
+                        pass
+
+                else:
+
+                    count +=1
+
+                    if count==7:
+
+                        print("You lose.")
+
+                        break
+
+                    else:
+
+                        pass
+
+            if count < 7 and len(ans_non_repeat) > 0:
+
+                print("You chickened out.")
+
+                continue
+
+except EOFError:
+
+    pass

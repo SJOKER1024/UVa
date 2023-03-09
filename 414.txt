@@ -1,0 +1,17 @@
+#UVa 414
+
+try:
+    while(True):
+        x=int(input())
+        if x==1:
+            z=input()
+            print("0")
+        elif x==0:
+            break
+        else:
+            y=[]
+            for i in range(x):
+                y.append(len(input().replace(" ","")))
+            print(x*max(y)-sum(y))
+except EOFError:
+    pass

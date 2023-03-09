@@ -1,0 +1,139 @@
+#UVa 227
+
+count=0
+
+while count >= 0:
+
+    count+=1
+
+    list1=[[],[],[],[],[]]
+
+    x=0
+
+    y=0
+
+    for i in range(5):
+
+        row=input().rstrip("\n\r")
+
+        if " " in row[0:5]:
+
+            x = i
+
+            y = row.index(" ")
+
+        if row == "Z":
+
+            count=-1
+
+            break
+
+        else:
+
+            for j in range(5):
+
+                list1[i].append(row[j])
+    if count >=2:
+
+        print("")
+
+    op=1
+
+    final=1
+
+    judge=1
+
+    while op==1 and count >=0:
+
+        com=input().rstrip("\n\r")
+
+        for k in range(len(com)):
+
+            if com[k]=="0":
+
+                final=0
+
+                op=0
+
+            elif com[k]=="A":
+
+                if x != 0:
+
+                    list1[x][y] = list1[x-1][y]
+
+                    list1[x-1][y] = " "
+
+                    x -= 1
+
+                else:
+
+                    judge=0
+
+            elif com[k]=="B":
+
+                if x != 4:
+
+                    list1[x][y] = list1[x+1][y]
+
+                    list1[x+1][y] = " "
+
+                    x += 1
+
+                else:
+
+                    judge=0
+
+            elif com[k]=="L":
+
+                if y != 0:
+
+                    list1[x][y] = list1[x][y-1]
+
+                    list1[x][y-1] = " "
+
+                    y -= 1
+
+                else:
+                    judge=0
+
+            elif com[k]=="R":
+
+                if y != 4:
+
+                    list1[x][y] = list1[x][y+1]
+
+                    list1[x][y+1] = " "
+
+                    y += 1
+
+                else:
+
+                    judge=0
+
+            else:
+
+                judge=0
+
+    if final == 0:
+
+        if judge == 1:
+
+            print("Puzzle #"+str(count)+":")
+
+            for a in range(5):
+
+                ans = ""
+
+                for b in range(4):
+
+                    ans += (list1[a][b] + " ")
+
+                ans += list1[a][4]
+
+                print(ans)
+
+        else:
+
+            print("Puzzle #"+str(count)+":")
+
+            print("This puzzle has no final configuration.")

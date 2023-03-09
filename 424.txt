@@ -1,0 +1,13 @@
+#UVa 424
+
+ans=0
+
+try:
+
+    while True:
+
+        ans+=int(input())
+
+except EOFError:
+
+    print(ans)

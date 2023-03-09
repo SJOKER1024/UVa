@@ -1,0 +1,73 @@
+#UVa 253
+
+base=[[0,1,2,3,4,5],[1,3,5,0,2,4],[2,0,1,4,5,3],[3,4,5,0,1,2],[4,0,2,3,5,1],[5,3,4,1,2,0]]
+
+try:
+
+    while True:
+
+        flip=0
+
+        x=input().rstrip("\n\r")
+
+        left=x[0:6]
+
+        right=x[6:12]
+
+        while flip != 6:
+
+            rotate=0
+
+            Lstring=""
+
+            for j in range(6):
+
+                Lstring += x[base[flip][j]]
+
+            if Lstring == right:
+
+                print("TRUE")
+
+                flip=6
+
+                break
+
+            else:
+
+                while rotate != 3:
+
+                    L = [v for v in Lstring]
+
+                    Lstring = L[0]+L[3]+L[1]+L[4]+L[2]+L[5]
+
+                    if Lstring == right:
+
+                        print("TRUE")
+
+                        rotate=3
+
+                        flip = 6
+
+                        break
+
+                    else:
+
+                        rotate += 1
+
+            if flip == 5:
+
+                print("FALSE")
+
+                flip = 6
+
+            elif flip == 6:
+
+                pass
+
+            else:
+
+                flip += 1
+
+except EOFError:
+
+    pass

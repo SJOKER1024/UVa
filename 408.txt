@@ -1,0 +1,43 @@
+#Uva 408
+
+try:
+
+    while True:
+
+        x,y = (int(v) for v in input().split())
+
+        if x <= y:
+
+            small=x
+
+            big=y
+
+        else:
+
+            small=y
+
+            big=x
+
+        while small > 1:
+
+            temp=small
+
+            small=big%small
+
+            big=temp
+
+        if small==1:
+
+            print("{0:>10}".format(x)+"{0:>10}".format(y)+"    "+"Good Choice")
+
+            print("")
+
+        else:
+
+            print("{0:>10}".format(x)+"{0:>10}".format(y)+"    "+"Bad Choice")
+
+            print("")
+
+except EOFError:
+
+    pass

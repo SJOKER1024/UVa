@@ -1,0 +1,123 @@
+#UVa 232
+
+puz=0
+
+try:
+
+    while True:
+
+        rc=[int(v) for v in input().split()]
+
+        if len(rc) != 2:
+
+            break
+
+        else:
+
+            puz+=1
+
+            list1=[]
+
+            row=[]
+
+            column=[]
+
+            count=0
+
+            for i in range(rc[0]):
+
+                list1.append([])
+
+            for j in range(rc[0]):
+
+                x=input().rstrip("\n\r")
+
+                for k in range(rc[1]):
+
+                    list1[j].append(x[k])
+
+            for m in range(rc[0]):
+
+                for n in range(rc[1]):
+
+                    if list1[m][n]=="*":
+
+                        continue
+
+                    elif n==0 or list1[m][n-1]=="*":
+
+                        count+=1
+
+                        ans=" "*(3-len(str(count)))+str(count)+"."
+
+                        for p in range(rc[1]-n):
+
+                            if list1[m][n+p] != "*":
+
+                                ans+=list1[m][n+p]
+
+                            else:
+
+                                break
+
+                        row.append(ans)
+
+                        if m==0 or list1[m-1][n]=="*":
+
+                            ans=" "*(3-len(str(count)))+str(count)+"."
+
+                            for q in range(rc[0]-m):
+
+                                if list1[m+q][n] != "*":
+
+                                    ans+=list1[m+q][n]
+
+                                else:
+
+                                    break
+
+                            column.append(ans)
+
+                    elif m==0 or list1[m-1][n]=="*":
+
+                        count+=1
+
+                        ans=" "*(3-len(str(count)))+str(count)+"."
+
+                        for r in range(rc[0]-m):
+
+                            if list1[m+r][n] != "*":
+
+                                ans+=list1[m+r][n]
+
+                            else:
+
+                                break
+
+                        column.append(ans)
+
+                    else:
+
+                        pass
+
+            if puz > 1:
+
+                print("")
+
+            print("puzzle #"+str(puz)+":")
+
+            print("Across")
+
+            for a in range(len(row)):
+
+                print(row[a])
+
+            print("Down")
+
+            for b in range(len(column)):
+
+                print(column[b])
+
+except EOFError:
+
+    pass

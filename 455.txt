@@ -1,0 +1,33 @@
+UVa 455
+
+case=int(input())
+
+for i in range(case):
+
+    blank=input()
+
+    x=input().strip("\n\r")
+
+    for j in range(1,len(x)+1):
+
+        if j==len(x)//2+1:
+
+            print(len(x))
+
+            if i < case-1:
+
+                print("")
+
+            break
+
+        elif len(x)%j==0:
+
+            if x[:j]*(len(x)//j)==x:
+
+                print(j)
+
+                if i < case-1:
+
+                    print("")
+
+                break
